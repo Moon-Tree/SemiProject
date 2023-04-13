@@ -17,10 +17,10 @@
 </style>
 
 <c:if test="${sessionScope.memberId != null}">
-<script src="/static/js/review-like.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/review-like.js"></script>
 </c:if>
 
-<link rel="stylesheet" type="text/css" href="/static/css/reply.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/reply.css">
 
 <script>
 	var memberId = "${sessionScope.memberId}";
@@ -37,10 +37,16 @@ $(function(){
             window.location.href = $(this).attr("href"); // 링크 이동
         }
     });
+    $(".review-content").find("img").each(function(){
+		var origin = $(this).attr("src");
+		var begin = origin.indexOf('/rest');
+		var path = contextPath + (origin.substr(begin));
+		$(this).attr("src", path);
+	});
 });
 </script>
 
-<script src="/static/js/review-reply.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/review-reply.js"></script>
 
 <script type="text/template" id="reply-template">
 	<div class="reply-item">
@@ -48,6 +54,7 @@ $(function(){
 		<div class="reviewReplyContent">?</div>
 		<div class="reviewReplyTime">?</div>
 	</div>
+
 </script>
 
 <div class="container-800">
@@ -59,11 +66,11 @@ $(function(){
 	<div class="row writer">
 		<c:choose>
 			<c:when test="${memberProfile.attachmentNo != null}">
-				<img class="me-10" width="90" height="90" src="/attachment/download?attachmentNo=${memberProfile.attachmentNo}">
+				<img class="me-10" width="90" height="90" src="${pageContext.request.contextPath}/attachment/download?attachmentNo=${memberProfile.attachmentNo}">
 				${memberNick}
 			</c:when>
 			<c:otherwise>
-       			<img class="me-10" width="90" height="90" src="/static/image/usericon.jpg">
+       			<img class="me-10" width="90" height="90" src="${pageContext.request.contextPath}/static/image/usericon.jpg">
 				${memberNick}
 			</c:otherwise>
 		</c:choose>
@@ -80,7 +87,7 @@ $(function(){
 	
 	<hr>
 	
-	<div class="row"  style="min-height: 400px;">
+	<div class="row review-content"  style="min-height: 400px;">
 		${reviewDto.reviewContent}
 	</div>
 	<hr>
@@ -122,15 +129,15 @@ $(function(){
 		</c:if>
 
 	<div class="row right">
-		<a href="/review/list" class="form-btn neutral">목록보기</a>
+		<a href="${pageContext.request.contextPath}/review/list" class="form-btn neutral">목록보기</a>
 		
 		<!-- 관리자 or 작성자만 삭제 -->
 		<c:if test="${owner || admin}">	
-			<a href="/review/delete?reviewNo=${reviewDto.reviewNo}" class="form-btn negative">삭제</a>	
+			<a href="${pageContext.request.contextPath}/review/delete?reviewNo=${reviewDto.reviewNo}" class="form-btn negative">삭제</a>	
 		</c:if>
 		<!-- 작성자만 수정 -->
 		<c:if test="${owner}">
-			<a href="/review/edit?reviewNo=${reviewDto.reviewNo}" class="form-btn bosung">수정</a>	
+			<a href="${pageContext.request.contextPath}/review/edit?reviewNo=${reviewDto.reviewNo}" class="form-btn bosung">수정</a>	
 		</c:if>
 	</div>
 	</div>
