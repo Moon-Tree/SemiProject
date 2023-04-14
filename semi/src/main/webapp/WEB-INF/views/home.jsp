@@ -168,7 +168,7 @@
 
 </style>
 <div class="row center">
-<h1 class="home-title">${now} SNS 인기 여행지 Top 5 / 테스트</h1>
+<h1 class="home-title">${now} SNS 인기 여행지 Top 5</h1>
 </div>
 <div class="wrapper">
   <div class="swiper-container">
