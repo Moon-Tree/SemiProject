@@ -10,10 +10,17 @@
 
 
 ### :computer: 개발 환경
-* Windows 10
-* Spring Tool Suite4, Visual Studio Code, SQL Developer
-* Java17, JavaScript ES5, HTML5, CSS3, Oracle
-* jQuery3.6.4, swiper8, font-awesome6.2, summernote 0.8, kakao Maps api
+* OS : Windows 10
+* Language : Java17, Javascript ES6
+* BackEnd : JSP
+* FrontEnd : HTML5, CSS3
+* Server : Apache Tomcat 9.0
+* DBMS : Oracle 11g XE
+* IDE : Spring Tool Suite4, SQL Developer, Visual Studio Code
+* Library : Kakao Map API, Font Awesome, JQuery 3.6.4
+* Design : kakao oven
+* Team Collaboration Tool : Github
+* 배포 : AWS
 
 
 ### :information_desk_person:역할 및 담당
